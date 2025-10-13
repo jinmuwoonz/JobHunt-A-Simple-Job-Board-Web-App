@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block title %}Applicants{% endblock %}
+
+{% block content %}
+<h2 align="center">List of Applicants</h2>
+<h3 align="center">{{ job.title }}</h3>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr class="table-info">
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Resume</th>
+                <th scope="col">Cover Letter</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in applications %}
+            <tr>
+                <td>{{ application.applicant.user.name }}</td>
+                <td>{{ application.applicant.user.email }}</td>
+                <td>{{ application.phone }}</td>
+                <td>
+                    {% if application.resume_path %}
+                        <a href="{{ url_for('static', filename=application.resume_path) }}"
+                        target="_blank">View Resume</a>
+                    {% else %}
+                        No Resume
+                    {% endif %}
+                </td>
+                <td>
+                    {% if application.cover_letter_path %}
+                        <a href="{{ url_for('static', filename=application.cover_letter_path) }}"
+                        target="_blank">View Cover Letter</a>
+                    {% else %}
+                        No Cover Letter
+                    {% endif %}
+                </td>
+                <td>
+                    <span id="status-display-{{ loop.index }}">{{ application.status.capitalize() }}</span>
+
+                    <form method="post" action="{{ url_for('dashboard_bp.update_status') }}" class="d-none mt-1" id="status-form-{{ loop.index }}">
+                        <input type="hidden" name="application_id" value="{{ application.id }}">
+                        <select name="status" class="form-select form-select-sm mb-1">
+                            <option value="applied" {% if application.status == 'applied' %}disabled selected{% endif %}>Applied</option>
+                            <option value="accepted" {% if application.status == 'accepted' %}disabled selected{% endif %}>Accepted</option>
+                            <option value="rejected" {% if application.status == 'rejected' %}disabled selected{% endif %}>Rejected</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-success">Save</button>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="cancelEdit('{{ loop.index }}')">Cancel</button>
+                    </form>
+                </td>
+                <td>
+                    <button
+                        class="btn btn-sm btn-outline-primary"
+                        onclick="toggleEdit('{{ loop.index }}')"
+                    >Edit Status</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<script>
+function toggleEdit(index){
+    index = parseInt(index);
+    const statusDisplay = document.getElementById(`status-display-${index}`);
+    const statusForm = document.getElementById(`status-form-${index}`);
+
+    statusDisplay.classList.add('d-none');
+    statusForm.classList.remove('d-none');
+}
+
+function cancelEdit(index){
+    index = parseInt(index);
+    const statusDisplay = document.getElementById(`status-display-${index}`);
+    const statusForm = document.getElementById(`status-form-${index}`);
+    
+    statusDisplay.classList.remove('d-none');
+    statusForm.classList.add('d-none');
+}
+</script>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+<!-- prettier-ignore -->
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+{% if user_job_posted %}
+    <h2 align="center">List of Job Posted</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-info">
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Date Posted</th>
+                    <th scope="col">Date Updated</th>
+                    <th scope="col">No. of Applicants</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for job in user_job_posted %}
+                    <tr>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.date_posted }}</td>
+                        <td>{{ job.date_updated }}</td>
+                        <td>{{ job.no_of_applicants }}</td>
+                        <td>
+                            <a
+                                href="{{ url_for('jobs_bp.job_detail', job_id=job.id) }}"
+                                class="btn btn-sm btn-outline-primary"
+                                >View Job Details</a
+                            >
+                            <a
+                                href="{{ url_for('dashboard_bp.view_applicants', job_id=job.id) }}"
+                                class="btn btn-sm btn-outline-primary"
+                                >View Applicants</a
+                            >
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <h2 align="center">No Job Posted.</h2>
+{% endif %}
+{% endblock %}

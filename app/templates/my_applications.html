@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Job Applications{% endblock %}
+
+{% block content %}
+{% if user_job_applications %}
+    <h2 align="center">List of Job Applications</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr class="table-info">
+                    <th scope="col">Job Title</th>
+                    <th scope="col">Application Date</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in user_job_applications %}
+                    <tr>
+                        <td>{{ application.job.title }}</td>
+                        <td>{{ application.application_date }}</td>
+                        <td>{{ application.phone }}</td>
+                        <td>{{ application.status.capitalize() }}</td>
+                        <td>
+                            <a
+                                href="{{ url_for('jobs_bp.job_detail', job_id=application.job.id) }}"
+                                class="btn btn-sm btn-outline-primary"
+                                >View Details</a
+                            >
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <h2 align="center">You have no Job Applications.</h2>
+{% endif %}
+{% endblock %}

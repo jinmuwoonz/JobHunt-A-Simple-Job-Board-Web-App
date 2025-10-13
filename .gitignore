@@ -1,0 +1,101 @@
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pip-related
+pip-log.txt
+pip-delete-this-directory.txt
+.pip-version
+.tox/
+.tox-whitelist
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+*.cover
+htmlcov/
+.noseids
+.nosetests.xml
+
+# Translations
+*.mo
+*.pot
+
+# Flask-specific
+instance/
+.webassets-cache
+*.db  # SQLite databases (if you use any locally)
+*.sqlite
+*.sqlite3
+
+# Alembic/SQLAlchemy migrations (ignore caches, but commit .py files)
+migrations/__pycache__/
+migrations/versions/__pycache__/
+
+# Uploaded files (user-generated content like resumes/cover letters)
+app/static/uploads/
+app/static/uploads/**/*
+
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary files
+tmp/
+temp/

@@ -1,0 +1,26 @@
+<div class="card mb-3 shadow-sm">
+  <div class="card-body">
+    <h5 class="card-title">{{ job.title }}</h5>
+
+    <p
+      class="card-text text-truncate"
+      style="max-height: 3.6rem; overflow: hidden"
+    >
+      {{ job.description }}
+    </p>
+
+    <div class="mb-2">
+      <span class="badge badge-secondary text-dark">{{ job.location }}</span>
+      <span class="badge badge-light text-dark">
+        ₱{{ '{:,g}'.format(job.salary_min) }} - {{ '{:,g}'.format(job.salary_max) }}
+      </span>
+      <span class="badge badge-light text-dark">{{ job.date_posted.date() }}</span>
+    </div>
+
+    <a
+      href="{{ url_for('jobs_bp.job_detail', job_id=job.id) }}"
+      class="btn btn-sm btn-outline-primary"
+      >View Details</a
+    >
+  </div>
+</div>

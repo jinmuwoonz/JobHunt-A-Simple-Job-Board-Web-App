@@ -1,0 +1,9 @@
+app/templates/base.html
+app/templates/home.html
+app/templates/components/job_card.html
+app/templates/job_detail.html
+app/templates/post_job.html
+app/templates/my_applications.html
+app/templates/dashboard.html
+app/templates/applicants.html
+app/templates/profile.html

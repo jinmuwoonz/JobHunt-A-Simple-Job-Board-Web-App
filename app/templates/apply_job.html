@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+<!-- prettier-ignore -->
+{% block title %}Apply Job{% endblock %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data">
+  <h3 align="center">Apply</h3>
+  <div class="mb-3">
+    <label for="name">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="{{ name }}"
+      readonly
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email">Email Address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      name="email"
+      value="{{ email }}"
+      readonly
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="number">Phone Number</label>
+    <input
+      type="number"
+      class="form-control"
+      id="number"
+      name="number"
+      placeholder="Enter phone number"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="resume">Resume (.pdf file only)</label>
+    <input
+      type="file"
+      class="form-control"
+      id="resume"
+      name="resume"
+      accept=".pdf"
+      required
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="coverLetter">Cover Letter (.pdf file only)</label>
+    <input
+      type="file"
+      class="form-control"
+      id="coverLetter"
+      name="coverLetter"
+      accept=".pdf"
+      required
+    />
+  </div>
+  <br />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

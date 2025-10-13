@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2 align="center">Latest Jobs</h2>
+{% for job in jobs %}
+    {% include 'components/job_card.html' %}
+{% endfor %}
+{% endblock %}
