@@ -14,7 +14,7 @@ Follow these steps to set up and run the app locally in development mode.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/jinmuwoonz/flask-jobhunt-app.git
+git clone https://github.com/jinmuwoonz/JobHunt-A-Simple-Job-Board-Web-App.git
 cd flask-jobhunt-app
 ```
 
