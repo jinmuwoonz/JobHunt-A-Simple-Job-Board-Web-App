@@ -61,9 +61,8 @@ instance/
 migrations/__pycache__/
 migrations/versions/__pycache__/
 
-# Uploaded files (user-generated content like resumes/cover letters)
-app/static/uploads/
-app/static/uploads/**/*
+# Uploaded files (user-generated content like resumes)
+app/static/uploads/resumes/**
 
 # Environment variables and secrets
 .env
