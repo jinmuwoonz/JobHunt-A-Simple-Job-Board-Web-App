@@ -62,7 +62,8 @@ migrations/__pycache__/
 migrations/versions/__pycache__/
 
 # Uploaded files (user-generated content like resumes)
-app/static/uploads/resumes/**
+app/static/uploads/resumes/*
+!app/static/uploads/resumes/.gitkeep
 
 # Environment variables and secrets
 .env
