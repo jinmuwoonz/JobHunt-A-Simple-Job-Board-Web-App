@@ -6,13 +6,13 @@ from . import db
 import enum
 
 class UserType(enum.Enum):
-    APPLICANT = 'A'
-    EMPLOYER = 'E'
+    A = 'A'
+    E = 'E'
 
 class UserStatus(enum.Enum):
-    PENDING = 'Pending'
-    VERIFIED = 'Verified'
-    REJECTED = 'Rejected'
+    Pending = 'Pending'
+    Varified = 'Verified'
+    Rejected = 'Rejected'
 
 class User(db.Model, UserMixin):
     __tablename__ = 'User'
@@ -72,8 +72,8 @@ class JobCategory(db.Model):
     job_category = db.relationship('Job', backref='jobcat', foreign_keys='Job.category_id')
 
 class JobStatus(enum.Enum):
-    OPEN = 'Actively Hiring'
-    CLOSED = 'Closed'
+    Open = 'Actively Hiring'
+    Closed = 'Closed'
 
 class Job(db.Model):
     __tablename__ = 'Job'
@@ -96,10 +96,10 @@ class Job(db.Model):
     applicants = db.relationship('JobApplication', backref='job')
 
 class JobApplicationStatus(enum.Enum):
-    PENDING = 'Pending'
-    ACCEPTED = 'Accepted'
-    REJECTED = 'Rejected'
-    WITHDRAWN = 'Withdrawn'
+    Pending = 'Pending'
+    Accepted = 'Accepted'
+    Rejected = 'Rejected'
+    Withdrawn = 'Withdrawn'
 
 class JobApplication(db.Model):
     __tablename__ = 'JobApplication'

@@ -1,8 +1,8 @@
-"""initial migration
+"""fixed enum data types
 
-Revision ID: b333dbe98923
+Revision ID: 6357bb6f8278
 Revises: 
-Create Date: 2025-12-02 23:36:30.517916
+Create Date: 2025-12-03 18:37:52.881438
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b333dbe98923'
+revision = '6357bb6f8278'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -40,8 +40,8 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=200), nullable=False),
     sa.Column('verification_doc', sa.Text(), nullable=False),
     sa.Column('description', sa.String(length=200), nullable=True),
-    sa.Column('user_type', sa.Enum('APPLICANT', 'EMPLOYER', name='usertype'), nullable=False),
-    sa.Column('status', sa.Enum('PENDING', 'VERIFIED', 'REJECTED', name='userstatus'), nullable=False),
+    sa.Column('user_type', sa.Enum('A', 'E', name='usertype'), nullable=False),
+    sa.Column('status', sa.Enum('Pending', 'Varified', 'Rejected', name='userstatus'), nullable=False),
     sa.Column('date_registered', sa.DateTime(timezone=True), nullable=False),
     sa.PrimaryKeyConstraint('user_id'),
     sa.UniqueConstraint('email')
@@ -84,7 +84,7 @@ def upgrade():
     sa.Column('category_id', sa.Integer(), nullable=False),
     sa.Column('salary_range', sa.String(length=50), nullable=False),
     sa.Column('employment_type', sa.String(length=25), nullable=False),
-    sa.Column('status', sa.Enum('OPEN', 'CLOSED', name='jobstatus'), nullable=False),
+    sa.Column('status', sa.Enum('Open', 'Closed', name='jobstatus'), nullable=False),
     sa.Column('date_posted', sa.DateTime(timezone=True), nullable=False),
     sa.Column('date_updated', sa.DateTime(timezone=True), nullable=True),
     sa.Column('no_of_applicants', sa.Integer(), nullable=False),
@@ -97,7 +97,7 @@ def upgrade():
     sa.Column('job_id', sa.Integer(), nullable=False),
     sa.Column('applicant_id', sa.Integer(), nullable=False),
     sa.Column('application_date', sa.DateTime(timezone=True), nullable=False),
-    sa.Column('status', sa.Enum('PENDING', 'ACCEPTED', 'REJECTED', 'WITHDRAWN', name='jobapplicationstatus'), nullable=False),
+    sa.Column('status', sa.Enum('Pending', 'Accepted', 'Rejected', 'Withdrawn', name='jobapplicationstatus'), nullable=False),
     sa.Column('resume_file', sa.Text(), nullable=False),
     sa.Column('reason', sa.String(length=200), nullable=True),
     sa.ForeignKeyConstraint(['applicant_id'], ['Applicant.user_id'], ),
